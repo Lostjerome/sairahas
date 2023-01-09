@@ -1,58 +1,28 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import { onMounted } from "vue";
-
-onMounted(() => {
-  const script = document.createElement("script");
-
-  script.src = "https://buttons.github.io/buttons.js";
-  script.async = true;
-
-  document.body.appendChild(script);
-});
+import InputCard from "./components/input-card.vue";
+import HintCard from "./components/hint-card.vue";
+import Pill from "./components/pill.vue";
 </script>
 
 <template>
-  <div class="bg-gray-800 h-screen text-white">
-    <header class="py-16">
-      <h1 class="text-5xl font-bold text-center mb-6">Create Tailwind</h1>
-      <p className="text-center mb-6 text-xl">
-        If you like this project, consider giving it a star on GitHub!
-      </p>
-
-      <div class="flex flex-row justify-center items-center gap-4">
-        <a
-          class="github-button"
-          href="https://github.com/andrejjurkin/create-tailwind-app"
-          data-color-scheme="no-preference: dark; light: dark; dark: dark;"
-          data-icon="octicon-star"
-          data-size="large"
-          data-show-count="true"
-          aria-label="Star andrejjurkin/create-tailwind-app on GitHub"
-        >
-          Star
-        </a>
-        <a
-          class="github-button"
-          href="https://github.com/andrejjurkin/create-tailwind-app/discussions"
-          data-color-scheme="no-preference: dark; light: dark; dark: dark;"
-          data-icon="octicon-comment-discussion"
-          data-size="large"
-          aria-label="Discuss andrejjurkin/create-tailwind-app on GitHub"
-        >
-          Discuss
-        </a>
-      </div>
-    </header>
-
-    <div class="flex gap-16 items-center justify-center">
-      <a href="https://vitejs.dev" target="_blank">
-        <img src="/vite.svg" class="w-24 h-24" alt="Vite logo" />
-      </a>
-      <a href="https://vuejs.org/" target="_blank">
-        <img src="./assets/vue.svg" class="w-24 h-24" alt="Vue logo" />
-      </a>
+  <div class="px-5">
+    <div class="mt-20" />
+    <div class="w-full max-w-xl m-auto flex flex-col items-center text-center">
+      <Pill>Sairahas name</Pill>
+      <InputCard />
+    </div>
+    <div
+      class="flex w-full md:w-[90%] m-auto justify-center items-center space-x-3 md:space-x-5 my-20"
+    >
+      <div class="h-[1px] w-full bg-black"></div>
+      <div class="whitespace-nowrap">Revealed hints</div>
+      <div class="h-[1px] w-full bg-black"></div>
     </div>
   </div>
+  <div class="flex space-x-5 overflow-auto px-5">
+    <HintCard />
+    <HintCard />
+    <HintCard />
+  </div>
+  <div class="mt-20" />
 </template>
