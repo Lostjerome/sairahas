@@ -7,16 +7,20 @@ import CardsContainer from "./layouts/cards-container.vue";
 </script>
 
 <template>
-  <div class="px-5 my-20">
-    <div class="w-full max-w-xl m-auto flex flex-col items-center text-center">
-      <Pill>Sairahas name</Pill>
-      <InputCard />
+  <div class="my-20">
+    <div class="px-5">
+      <div
+        class="w-full max-w-xl m-auto flex flex-col items-center text-center"
+      >
+        <Pill>Sairahas name</Pill>
+        <InputCard />
+      </div>
     </div>
+    <Label />
+    <CardsContainer>
+      <HintCard />
+      <HintCard />
+      <HintCard />
+    </CardsContainer>
   </div>
-  <Label />
-  <CardsContainer>
-    <HintCard />
-    <HintCard />
-    <HintCard />
-  </CardsContainer>
 </template>
