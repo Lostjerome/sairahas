@@ -12,9 +12,6 @@ import sairahas from "./utils/sairahas";
 const savedSairahas = ref(JSON.parse(localStorage.getItem("savedSairahas")));
 
 let sairahasName = ref(savedSairahas.value?.name || "");
-// savedSairahas.value?.name
-//   ? (sairahasName.value = savedSairahas.value.name)
-//   : (sairahasName.value = "");
 
 let currentSairahas = ref(
   sairahas.value.find(
@@ -124,6 +121,6 @@ watch(
     v-else
     id="sairahas-name"
     placeholder="Enter a sairahas name"
-    class="px-10 py-3 bg-white text-center outline-none drop-shadow-lg rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    class="w-10/12 max-w-md px-10 py-3 bg-white text-center outline-none drop-shadow-lg rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
   />
 </template>

@@ -20,11 +20,13 @@ const emit = defineEmits(["reveal"]);
 
 function alert(msg, className) {
   const notification = document.getElementById("notification");
+  notification.classList.remove("text-green-500", "text-red-500");
   notification.classList.add(className);
   notification.innerText = msg;
+
   setTimeout(() => {
     notification.classList.remove(className);
-    notification.innerHTML = "";
+    notification.innerText === msg && (notification.innerText = "");
   }, 2000);
 }
 

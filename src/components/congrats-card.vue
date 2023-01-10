@@ -5,7 +5,7 @@
   >
     <p class="font-bold">Congratulations!</p>
     <div
-      class="w-full outline-0 bg-gray-200 rounded-md p-2 text-center text-lg self-center"
+      class="w-full outline-0 rounded-md p-2 text-center text-lg self-center"
     >
       "You have completed all the hints for this sairahas."
     </div>
