@@ -31,6 +31,23 @@ const sairahas = ref([
       },
     ],
   },
+  {
+    name: "Lost",
+    hints: [
+      {
+        hint: "O2",
+        answer: "Oxygen",
+        image: "",
+        revealed: false,
+      },
+      {
+        hint: "H2O",
+        answer: "Water",
+        image: "",
+        revealed: false,
+      },
+    ],
+  },
 ]);
 
 export default sairahas;

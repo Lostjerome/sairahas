@@ -32,7 +32,7 @@ function submit() {
   const input = document.getElementById("input-answer");
   const inputAnswer = input.value;
 
-  if (inputAnswer.toLowerCase() === props.answer.toLowerCase()) {
+  if (inputAnswer.trim().toLowerCase() === props.answer.trim().toLowerCase()) {
     alert("Correct!", "text-green-500");
     emit.call(this, "reveal");
     input.value = "";
