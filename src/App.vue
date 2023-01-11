@@ -143,7 +143,10 @@ btnIconToggle();
     </div>
     <CardsContainer>
       <HintCard
-        v-for="(hint, index) in hints.filter((hint) => hint.revealed)"
+        v-for="(hint, index) in hints
+          .filter((hint) => hint.revealed)
+          .slice()
+          .reverse()"
         :key="index"
         :hint="hint.hint"
         :answer="hint.answer"
