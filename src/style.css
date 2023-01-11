@@ -3,5 +3,11 @@
 @tailwind utilities;
 
 body {
-  background-color: #f5f5f5;
+  background-color: #efefef;
+  transition: all 200ms linear;
+}
+
+/* dark mode class */
+.dark {
+  @apply bg-gray-900 text-white;
 }

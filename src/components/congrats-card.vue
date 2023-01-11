@@ -1,7 +1,7 @@
 <script setup></script>
 <template>
   <div
-    class="h-60 w-full bg-white drop-shadow-lg rounded-3xl p-5 pb-8 md:p-5 flex flex-col justify-between"
+    class="h-60 w-full bg-white dark:bg-slate-700 drop-shadow-lg rounded-3xl p-5 pb-8 md:p-5 flex flex-col justify-between"
   >
     <p class="font-bold">Congratulations!</p>
     <div

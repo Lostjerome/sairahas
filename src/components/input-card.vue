@@ -1,5 +1,6 @@
 <script setup>
 import { defineEmits, defineProps, onMounted } from "vue";
+import ArrowIcon from "../assets/send-message.png";
 
 const props = defineProps({
   hint: {
@@ -61,7 +62,7 @@ onMounted(() => {
 </script>
 <template>
   <div
-    class="h-60 w-full bg-white drop-shadow-lg rounded-3xl p-5 pb-8 md:p-5 flex flex-col justify-between"
+    class="h-60 w-full bg-white dark:bg-slate-700 drop-shadow-lg rounded-3xl p-5 pb-8 md:p-5 flex flex-col justify-between"
   >
     <p>
       Hint: <span class="font-bold">{{ hint || "No hint" }}</span>
@@ -70,15 +71,16 @@ onMounted(() => {
       type="text"
       placeholder="Your answer"
       id="input-answer"
-      class="w-full outline-0 bg-gray-200 rounded-md p-2 text-center text-lg self-center"
+      class="w-full outline-0 bg-gray-200 dark:bg-gray-500 rounded-md p-2 text-center text-lg self-center"
     />
     <div class="flex justify-between items-center">
       <div class="w-10 h-10 hidden md:block" />
       <div id="notification" class="hidden md:block"></div>
       <button
         @click="submit"
-        class="w-full md:w-10 h-10 bg-blue-500 text-white rounded-full self-end active:scale-90 duration-200"
+        class="w-full md:w-auto p-3 bg-blue-500 dark:bg-blue-700 justify-center space-x-2 text-white flex rounded-full self-end active:scale-90 duration-200"
       >
+        <img :src="ArrowIcon" alt="Send" class="w-5 h-5 -rotate-12" />
         <span class="md:hidden"> Submit</span>
       </button>
     </div>

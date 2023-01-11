@@ -7,6 +7,9 @@ import CardsContainer from "./layouts/cards-container.vue";
 import CongratsCard from "./components/congrats-card.vue";
 import { ref, watch } from "vue";
 
+import sunIcon from "./assets/sun.png";
+import moonIcon from "./assets/moon.png";
+
 import sairahas from "./utils/sairahas";
 
 const savedSairahas = ref(JSON.parse(localStorage.getItem("savedSairahas")));
@@ -14,9 +17,7 @@ const savedSairahas = ref(JSON.parse(localStorage.getItem("savedSairahas")));
 let sairahasName = ref(savedSairahas.value?.name || "");
 
 let currentSairahas = ref(
-  sairahas.value.find(
-    (sairaha) => sairaha.name.toLowerCase() === sairahasName.value.toLowerCase()
-  )
+  sairahas.value.find((sairaha) => sairaha.name === sairahasName.value)
 );
 let { name, hints } = currentSairahas.value || { name: "", hints: [] };
 
@@ -67,7 +68,7 @@ watch(
   () => sairahasName.value,
   (newVal) => {
     currentSairahas.value = sairahas.value.find(
-      (sairaha) => sairaha.name.toLowerCase() === newVal.toLowerCase()
+      (sairaha) => sairaha.name === newVal
     );
     if (currentSairahas.value) {
       name = currentSairahas.value.name;
@@ -77,16 +78,49 @@ watch(
   }
 );
 
+const submitName = () => {
+  const nameInput = document.getElementById("sairahas-name");
+  if (
+    nameInput &&
+    sairahas.value.find((item) => item.name === nameInput.value)
+  ) {
+    sairahasName.value = nameInput.value;
+  }
+};
+
 !sairahasName.value &&
   window.addEventListener("keydown", (e) => {
-    const nameInput = document.getElementById("sairahas-name");
-
     if (e.key === "Enter") {
-      sairahasName.value = nameInput.value;
-      console.log(sairahasName.value);
-      nameInput.value = "";
+      submitName();
     }
   });
+
+const btnIconToggle = () => {
+  setTimeout(() => {
+    const darkModeToggle = document.getElementById("dark-mode-toggle");
+    darkModeToggle.innerHTML = !isDarkMode.value
+      ? `<img src=${sunIcon} class="w-6 h-6" />`
+      : `<img  src=${moonIcon} class="w-6 h-6" />`;
+  }, 1);
+};
+
+const toggleDarkMode = () => {
+  const body = document.querySelector("body");
+  if (body) {
+    body.classList.toggle("dark");
+  }
+
+  // Save dark mode preference to local storage
+  isDarkMode = ref(body.classList.contains("dark"));
+  localStorage.setItem("darkMode", isDarkMode.value);
+  btnIconToggle();
+};
+
+let isDarkMode = ref(localStorage.getItem("darkMode") === "true");
+if (isDarkMode.value) {
+  toggleDarkMode();
+}
+btnIconToggle();
 </script>
 
 <template>
@@ -117,10 +151,20 @@ watch(
       />
     </CardsContainer>
   </div>
-  <input
+  <div
     v-else
-    id="sairahas-name"
-    placeholder="Enter a sairahas name"
-    class="w-10/12 max-w-md px-10 py-3 bg-white text-center outline-none drop-shadow-lg rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-  />
+    class="w-10/12 max-w-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center space-y-8"
+  >
+    <input
+      id="sairahas-name"
+      placeholder="Fill your sairahas name here"
+      class="w-full px-10 py-3 bg-white dark:bg-slate-700 text-center outline-none drop-shadow-lg rounded-full"
+    />
+    <p class="text-gray-400">Enter to continue</p>
+  </div>
+  <button
+    id="dark-mode-toggle"
+    @click="toggleDarkMode"
+    class="p-3 dark:bg-slate-700 bg-white drop-shadow-lg m-3 rounded-full fixed top-0 right-0"
+  ></button>
 </template>

@@ -18,14 +18,8 @@ const sairahas = ref([
         revealed: false,
       },
       {
-        hint: "King Vamp",
+        hint: "Jordan Carter",
         answer: "Playboi Carti",
-        image: "",
-        revealed: false,
-      },
-      {
-        hint: "The 3rd",
-        answer: "The 3rd",
         image: "",
         revealed: false,
       },
